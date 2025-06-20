@@ -22,6 +22,7 @@ export const validateSignUp=async(req,res,next)=>{
         console.log("Server Error:",err);
         return res.status(500).json({error:"Server Error"});
     }
+    req.validatedUser = value; // Attach validated data to req
     next();
 }
 

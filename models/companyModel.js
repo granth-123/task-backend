@@ -5,12 +5,10 @@ const companySchema=new mongoose.Schema({
         type:String,
         required:true,
         trim:true,
-        lowercase:true
     },
     address:{
         type:String,
         required:true,
-        lowercase:true,
         trim:true
     },
     userRef:{
@@ -20,7 +18,8 @@ const companySchema=new mongoose.Schema({
     },
     GSTIN:{
         type:String,
-        trim:true
+        trim:true,
+        required:true
     },
     PAN:{
         type:String,
@@ -52,12 +51,12 @@ const companySchema=new mongoose.Schema({
   applicationId: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Application',
-    validate: {
-      validator: function (arr) {
-        return Array.isArray(arr) && new Set(arr.map(String)).size === arr.length;
-      },
-      message: 'Duplicate application references are not allowed'
-    }
+    // validate: {
+    //   validator: function (arr) {
+    //     return Array.isArray(arr) && new Set(arr.map(String)).size === arr.length;
+    //   },
+    //   message: 'Duplicate application references are not allowed'
+    // }
   }]
 }, { timestamps: true });
 
