@@ -41,9 +41,7 @@ export const resetPassword = async (req, res) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const hashedPassword = await bcrypt.hash(newPassword, 5);
-
     await User.findByIdAndUpdate(decoded.userId, { password: hashedPassword });
-
     res.status(200).json({ message: "Password has been reset successfully." });
   } catch (err) {
     console.error("Reset error:", err);
