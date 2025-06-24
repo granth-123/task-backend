@@ -41,7 +41,7 @@ export const deleteCompany = async (req, res) => {
     return res.status(500).json({ error: "Server Error" });
   }
 };
-
+  
 export const listCompany = async (req, res) => {
   try {
     const { page = 1, limit = 3, startDate } = req.query;

@@ -5,7 +5,7 @@ export const companyValidate=(company)=>{
         businessName: Joi.string().min(2).max(100).trim().required(),
         address: Joi.string().min(5).trim().required(),
         userRef: Joi.string().hex().length(24).trim().required(),
-         GSTIN: Joi.string()
+        GSTIN: Joi.string()
         .trim()
         .length(15)
         .pattern(/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/)
@@ -29,7 +29,7 @@ export const companyValidate=(company)=>{
         .pattern(/^[A-Z0-9]{21}$/)
         .required()
         .messages({
-            'string.length':     'CIN must be exactly 21 characters',
+            'string.length':'CIN must be exactly 21 characters',
             'string.pattern.base': 'CIN must be 21 uppercase alphanumeric characters'
         }),
         incorporationDate: Joi.date(),
@@ -37,7 +37,7 @@ export const companyValidate=(company)=>{
         registerAddress: Joi.string().trim(),
         state: Joi.string().trim(),
         city: Joi.string().trim(),
-        applicationId: Joi.array().items(Joi.string().hex().length(24))
+        // applicationId: Joi.array().items(Joi.string().hex().length(24))
     });
     return schema.validate(company);
 };
